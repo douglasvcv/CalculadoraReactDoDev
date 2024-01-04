@@ -2,41 +2,41 @@ import {useState} from 'react'
 import './App.css';
 
 function App() {
- const [firstNum, setFirstNum] = useState(document.querySelector('#Num1'))
- const [secondNum, setSecondNum] = useState(document.querySelector('#Num2'))
- const [resu, setResu] = useState()
+const [number1, setNumber1] = useState(document.querySelector('#num1'))
+const [number2, setNumber2] = useState(document.querySelector('#num2'))
+const [resu, setResu] = useState()
+
 
 const soma = ()=>{
-  let sum = firstNum + secondNum
-  setResu(sum)
- 
+  let soma = number1 + number2
+  setResu(soma)
+  
 }
-const subtraçao = ()=>{
-  let sub = firstNum - secondNum
+const subtracao = ()=>{
+  let sub = number1 - number2
   setResu(sub)
 }
-const multiplicaçao = ()=>{
-  let mult = firstNum * secondNum
+const multiplicacao = ()=>{
+  let mult = number1 * number2
   setResu(mult)
- 
 }
-const divisao = ()=>{
-  let div = firstNum / secondNum
-  setResu(div)
- 
-}
-  return (
-    <div>
-      <input type='number' id='Num1' value={firstNum} onChange={(e)=>{setFirstNum(Number(e.target.value))}} ></input>
-      <input type='number' id='Num2' value={secondNum} onChange={(e=>{setSecondNum(Number(e.target.value))})}></input>
-      <button onClick={soma}>+</button>
-      <button onClick={subtraçao}>-</button>
-      <button onClick={multiplicaçao}>*</button>
-      <button onClick={divisao}>/</button>
 
-      <span id='resultado' >Resultado: {resu}</span>
-    </div>
-  )
+const divisao = ()=>{
+  let div = number1 / number2
+  setResu(div)
+}
+
+return(
+  <>
+  <input type='number' value={number1} onChange={(e)=>{setNumber1(Number(e.target.value))}} placeholder='Write the first value' id='num1'></input>
+  <input type='number' value={number2} onChange={(e)=>{setNumber2(Number(e.target.value))}} placeholder='Write the second value' id='num2'></input>
+  <button onClick={soma}>+</button>
+  <button onClick={subtracao}>-</button>
+  <button onClick={multiplicacao}>*</button>
+  <button onClick={divisao}>/</button>
+  <div id='resu'>O resultado é: {resu} </div>
+  </>
+)
 }
 
 export default App;
